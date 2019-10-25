@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        int actualRow = 0;
         public Form1()
         {
             InitializeComponent();
@@ -126,7 +127,6 @@ namespace WindowsFormsApp1
 
 
             if (entradasValidas) {
-                MessageBox.Show("Validacion exitosa");
 
                 //calcular totales y descuentos
                 float subTotal = PrecioUnitario * Cantidad;
@@ -154,8 +154,16 @@ namespace WindowsFormsApp1
 
                 //precentarlo en GridBox
                 dataGridView.Rows.Add();
-                
 
+                dataGridView.Rows[actualRow].Cells[nameIndex].Value = product_info[nameIndex];
+                dataGridView.Rows[actualRow].Cells[priceIndex].Value = product_info[priceIndex];
+                dataGridView.Rows[actualRow].Cells[amountIndex].Value = product_info[amountIndex];
+                dataGridView.Rows[actualRow].Cells[discountIndex].Value = product_info[discountIndex];
+                dataGridView.Rows[actualRow].Cells[IVAIndex].Value = product_info[IVAIndex];
+                dataGridView.Rows[actualRow].Cells[TotalIndex].Value = product_info[TotalIndex];
+
+                //incrementar el indice de la fila
+                actualRow++;
                 //limpiar cajas de texto
                 textBoxNombre.Text = "";
                 textBoxPrecioUnitario.Text = "";
